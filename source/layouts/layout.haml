@@ -11,19 +11,4 @@
   %body{:class => page_classes}
     = yield
 
-    :javascript
-      var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));
-      if(!oldieCheck) {
-      document.write('<\/script>');
-      } else {
-      document.write('<\/script>');
-      }
-      
-      
-      if(!window.jQuery) {
-      if(!oldieCheck) {
-        document.write('<\/script>');
-      } else {
-        document.write('<\/script>');
-      }
-      }
+            

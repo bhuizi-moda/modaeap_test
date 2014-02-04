@@ -1,0 +1,10 @@
+-# %h1= current_page.data.title
+-# %h2= current_page.data.bodyclass
+
+#branding{:role => "banner"}
+	%img#logo{:src => "images/moda.png", :height => "71", :width => "145"}
+
+	-if current_page.data.banner
+		#home_img
+			%img{:src => "images/banner.jpg", :height => "150", :width => "928"}
+

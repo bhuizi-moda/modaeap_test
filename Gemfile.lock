@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/igrigorik/em-websocket.git
+  revision: d6758b550e8bf3a9d930e04fad0f933526929021
+  specs:
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -8,23 +16,22 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
+    coffee-script-source (1.7.0)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    em-websocket (0.5.0)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0.5.3)
     eventmachine (1.0.3-x86-mingw32)
     execjs (1.4.0)
       multi_json (~> 1.0)
     ffi (1.9.3-x86-mingw32)
+    font-awesome-middleman (4.0.3)
+      middleman (>= 3.0.0)
     fssm (0.2.10)
     haml (4.0.5)
       tilt
     hike (1.2.3)
-    http_parser.rb (0.5.3-x86-mingw32)
+    http_parser.rb (0.6.0)
     i18n (0.6.9)
     json (1.8.1)
     kramdown (1.3.1)
@@ -100,8 +107,11 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  compass (~> 0.12.2)
+  em-websocket!
+  font-awesome-middleman (~> 4.0.3)
   middleman (~> 3.2.2)
   middleman-livereload (~> 3.1.0)
-  modular-scale
+  modular-scale (~> 1.0.6)
   sassy-math
   wdm (~> 0.1.0)

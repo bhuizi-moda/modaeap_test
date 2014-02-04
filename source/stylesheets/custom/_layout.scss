@@ -1,0 +1,36 @@
+// Your custom layout SCSS should be written here...
+//@include respond(large-screens){
+	#page, header, footer, .moreinfo {
+		@include row()
+	}
+	#nav-container {
+		@include column(4)
+	}
+	header {
+		padding-bottom: em(27); /*34 from comp -7px extra in layout*/
+	}
+	#topbar{
+		position: relative;
+		margin-bottom: em(22);
+		& h1 {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+	#main-content {
+		@include column(8)
+	}
+	#main-content > *:first-child {
+		padding-top: 0;
+	}
+	#home_img {
+		padding: 5px;
+		border: 1px solid $banner_border;
+		box-sizing: content-box;
+	}
+	.container > * {
+		background: #fff;
+	}
+//}

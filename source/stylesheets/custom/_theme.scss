@@ -1,0 +1,16 @@
+h1 {
+  @include font-size($large);
+  &.xlarge {
+    @include font-size($larger);
+  }
+  &.xxlarge {
+    @include font-size($xlarge);
+  }
+  &.absurd {
+    @include font-size($xxlarge);
+  }
+}
+h2 { @include font-size($med); }
+h3 { @include font-size($norm);}
+h4 { @include font-size($small);}
+h5 { @include font-size($xsmall);}

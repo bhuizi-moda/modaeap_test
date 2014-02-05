@@ -12,6 +12,10 @@
 @include font-face("omnes_ods_bolditalic", font-files("omnesods_bold-italic-webfont.woff", "omnesods_bold-italic-webfont.ttf", "omnesods_bold-italic-webfont.svg", "omnesods_bold-italic-webfont.eot"), true, true);
 @include font-face("omnes_ods_lightitalic", font-files("omnesods_light-italic-webfont.woff", "omnesods_light-italic-webfont.ttf", "omnesods_light-italic-webfont.svg", "omnesods_light-italic-webfont.eot"), true, true);
 
+html {
+	overflow-y: scroll;
+}
+
 body {
 	background: $body_bgcolor;
 }

@@ -1,36 +1,85 @@
 // Your custom layout SCSS should be written here...
-//@include respond(large-screens){
-	#page, header, footer, .moreinfo {
-		@include row()
+@import "compass/layout/sticky-footer";
+@include sticky-footer(30px, ".container", "#layout_footer", "footer");
+
+#page, header, footer, .moreinfo {
+	@include row()
+}
+
+//navigation
+#nav-container {
+	@include column(4)
+}
+.icon-menu-toggle {
+	display: none;
+}
+	@include respond(all-phones) {
+	  #nav-container {
+	  	display: none;
+	  	&.active {
+	  		display:block;
+	  	}
+	  }
+	  .icon-menu-toggle {
+	  	display: inline;
+	  }
 	}
-	#nav-container {
-		@include column(4)
+
+
+header {
+	@include rem(padding-bottom, 27px); /*34 from comp -7px extra in layout*/
+}
+footer {
+	background: #fff;
+	text-align: center;
+}
+.nobannerimg {
+	@include rem(border-bottom, 1px solid $banner_border);
+}
+#topbar{
+	position: relative;
+	@include rem(margin-bottom, 22px);
+}
+	.topbar_title, #call_us {
+		position: absolute;
 	}
-	header {
-		padding-bottom: em(27); /*34 from comp -7px extra in layout*/
+	.topbar_title  {
+		@include rem(bottom, 4px); /*even up with logo*/
+		right: 0;
+		padding-bottom: 0;
 	}
-	#topbar{
-		position: relative;
-		margin-bottom: em(22);
-		& h1 {
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			padding-bottom: 0;
+	#call_us {
+		display: none;
+		&.is_visible {
+			display: block;
+			top: 0;
+			@include rem(right, -20px);
+			@include rem(top, -20px);
+			@include rem(padding, 10px);
+			background-color: $modern-aqua;
+			@include border-bottom-left-radius(5px);
+			color: #fff;
 		}
 	}
-	#main-content {
-		@include column(8)
+#main-content {
+	@include column(8);
+}
+#main-content > *:first-child {
+	padding-top: 0;
+}
+#home_img {
+	padding: 5px;
+	@include rem(border, 1px solid $banner_border);
+	box-sizing: content-box;
+}
+.container {
+	@include rem(max-width, 980px);
+	background: #fff;
+	height: 100%;
+	margin: 0 auto;
+	@include rem(padding, 20px);
+	& > * {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
 	}
-	#main-content > *:first-child {
-		padding-top: 0;
-	}
-	#home_img {
-		padding: 5px;
-		border: 1px solid $banner_border;
-		box-sizing: content-box;
-	}
-	.container > * {
-		background: #fff;
-	}
-//}
+}

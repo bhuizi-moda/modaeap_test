@@ -1,1 +1,14 @@
 // Your custom module SCSS should be written here...
+
+
+.moda-list {
+    margin: 0 0 0.75em 2em;
+}
+
+.moda-list li {
+  line-height: 1.2;
+  list-style-image: url("/images/bullet_arrow.gif");
+  list-style-position: outside;
+  margin-bottom: 0.2em;
+  width: 85%;
+}

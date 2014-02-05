@@ -38,9 +38,6 @@
     = javascript_include_tag "head"
 
   %body{:class => current_page.data.bodyclass}
-    /[if lt IE 8]
-      %p.browsehappy
-        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
     .container
       %header
         = partial "partials/_header"
@@ -51,11 +48,14 @@
             = partial "partials/_nav"
 
         %section#main-content{:role => "main"}
+          %h1= current_page.data.title
           -# Page content gets rendered here
           = yield
 
-      %footer
-        = partial "partials/_footer"
+      #layout_footer
+
+    %footer
+      = partial "partials/_footer"
 
     :javascript      
       var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));

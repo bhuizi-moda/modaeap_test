@@ -1,5 +1,6 @@
 // Your custom module SCSS should be written here...
 
+//custom bulleted lists
 
 .moda-list {
     margin: 0 0 0.75em 2em;
@@ -11,4 +12,51 @@
   list-style-position: outside;
   margin-bottom: 0.2em;
   width: 85%;
+}
+
+//navigation
+
+//toggle menu (hamburber) defaults
+.icon-menu-toggle {
+  display: none;
+  @include rem(height, 40px);
+  @include rem(width, 46px);
+  @include rem(line-height, 38px);
+  @include font-size(30px);
+}
+
+.main-nav {
+      
+}
+
+@include respond(all-phones) {
+	.main-nav {
+		display: none;
+		width: 100%;
+		text-align: center;
+		color: #fff !important;
+		&.active {
+			display:inline-block;
+			@include rem(margin-bottom, 22px);
+		}
+		li {
+			background: #ccc;
+			border-top: 1px solid #fff;
+			&:first-child {
+				border-top: 0 none;
+			}
+		}
+		a {
+			width: 100%;
+			height: 100%;
+			display: block;
+			color: #fff;
+			&:hover {
+				color: $modern-plum;
+			}
+		}
+	}
+	.icon-menu-toggle {
+		display: block;
+	}
 }

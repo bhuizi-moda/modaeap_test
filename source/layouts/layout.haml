@@ -22,13 +22,13 @@
   <!--<![endif]-->
   %head
     %meta{:charset => "utf-8"}
-    %meta{'http-equiv' => "X-UA-Compatible", :content =>"IE=edge"}
+    %meta{'http-equiv' => "X-UA-Compatible", :content => "IE=edge"}
 
     -# Pull in the page title
     %title= current_page.data.title
 
-    %meta{:name => "description", :content => ""}
-    %meta{:name => "author", :content => ""}
+    %meta{:name => "description", :content => "Moda Health Employee Assistance Program"}
+    %meta{:name => "author", :content => "Moda Health"}
     -# You may wish to remove the 'initial scale=1.0' for non-responsive layouts
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
 
@@ -44,7 +44,8 @@
 
       #page
         %section#nav-container
-          %nav{"gumby-fixed" => "top", :class => "vertical-nav"}
+          /gumby-fixed needs to be here, not on the container
+          %nav{:class => "vertical-nav", "gumby-fixed" => "top"} 
             = partial "partials/_nav"
 
         %section#main-content{:role => "main"}

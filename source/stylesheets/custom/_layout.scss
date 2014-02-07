@@ -3,83 +3,96 @@
 @include sticky-footer(30px, ".container", "#layout_footer", "footer");
 
 #page, header, footer, .moreinfo {
-	@include row()
+  @include row()
 }
 
-//navigation
+//navigation layout
 #nav-container {
-	@include column(4)
+  @include column(4)
 }
-.icon-menu-toggle {
-	display: none;
-}
-	@include respond(all-phones) {
-	  #nav-container {
-	  	display: none;
-	  	&.active {
-	  		display:block;
-	  	}
-	  }
-	  .icon-menu-toggle {
-	  	display: inline;
-	  }
-	}
-
 
 header {
-	@include rem(padding-bottom, 27px); /*34 from comp -7px extra in layout*/
+  @include rem(padding-bottom, 27px); /*34 from comp -7px extra in layout*/
 }
 footer {
-	background: #fff;
-	text-align: center;
+  background: #fff;
+  text-align: center;
 }
 .nobannerimg {
-	@include rem(border-bottom, 1px solid $banner_border);
+  @include rem(border-bottom, 1px solid $banner_border);
 }
 #topbar{
-	position: relative;
-	@include rem(margin-bottom, 22px);
+  position: relative;
+  @include rem(margin-bottom, 22px);
+  @include rem(min-width, 320px);
 }
-	.topbar_title, #call_us {
-		position: absolute;
-	}
-	.topbar_title  {
-		@include rem(bottom, 4px); /*even up with logo*/
-		right: 0;
-		padding-bottom: 0;
-	}
-	#call_us {
-		display: none;
-		&.is_visible {
-			display: block;
-			top: 0;
-			@include rem(right, -20px);
-			@include rem(top, -20px);
-			@include rem(padding, 10px);
-			background-color: $modern-aqua;
-			@include border-bottom-left-radius(5px);
-			color: #fff;
-		}
-	}
-#main-content {
-	@include column(8);
-}
-#main-content > *:first-child {
-	padding-top: 0;
+  .topbar_title, #call_us {
+    position: absolute;
+  }
+  .topbar_title  {
+    @include rem(bottom, 3px); /*even up with logo*/
+    @include rem(line-height, 1em);
+    right: 0;
+    padding-bottom: 0;
+    text-align: right;
+    max-width: 50%;
+    @include respond("max-width: 400px"){
+      text-align: left;
+    }
+  }
+  #call_us {
+    display: none;
+    @include font-size(15px);
+    top: 0;
+    @include rem(right, -20px);
+    @include rem(top, -20px);
+    @include rem(padding, 6px);
+    background-color: $modern-aqua;
+    @include border-bottom-left-radius(5px);
+    color: #fff;
+    .phone{
+      @include font-size(22px);
+    }
+    @include respond(all-phones) {
+      .text {
+        @include font-size(13px);
+      }
+      .phone {
+        @include font-size(16px);
+      }
+    }
+    @include respond("max-width: 400px"){
+      .text {
+        display: none;
+      }
+      width: 60%;
+    }
+    &.is_visible {
+      display: block;
+    }
+  }
+#logo {
+  z-index: 1;
+  position: relative;
 }
 #home_img {
-	padding: 5px;
-	@include rem(border, 1px solid $banner_border);
-	box-sizing: content-box;
+  padding: 5px;
+  @include rem(border, 1px solid $banner_border);
+}
+#main-content {
+  @include column(8);
+}
+#main-content > *:first-child {
+  padding-top: 0;
 }
 .container {
-	@include rem(max-width, 980px);
-	background: #fff;
-	height: 100%;
-	margin: 0 auto;
-	@include rem(padding, 20px);
-	& > * {
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-	}
+  @include rem(max-width, 980px);
+  background: #fff;
+  height: 100%;
+  margin: 0 auto;
+  @include rem(padding, 20px);
+  & > * {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }

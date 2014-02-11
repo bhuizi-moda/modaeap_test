@@ -17,6 +17,7 @@ header {
 footer {
   background: #fff;
   text-align: center;
+  @include rem(max-width, 980px);
 }
 .nobannerimg {
   @include rem(border-bottom, 1px solid $banner_border);
@@ -84,6 +85,9 @@ footer {
 }
 #main-content > *:first-child {
   padding-top: 0;
+}
+header, #main-content, #page {
+  @include rem(max-width, 940px);
 }
 .container {
   @include rem(max-width, 980px);

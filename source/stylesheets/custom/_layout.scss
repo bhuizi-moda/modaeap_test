@@ -6,9 +6,13 @@
   @include row()
 }
 
-//navigation layout
+//column layout
 #nav-container {
-  @include column(4)
+  @include column(5)
+}
+#main-content {
+  @include column(10);
+  @include pull(left, 1);
 }
 
 header {
@@ -36,9 +40,8 @@ footer {
     right: 0;
     padding-bottom: 0;
     text-align: right;
-    max-width: 50%;
-    @include respond("max-width: 400px"){
-      text-align: left;
+    @include respond("max-width: 768px") {
+      @include rem(bottom, 10px);
     }
   }
   #call_us {
@@ -80,9 +83,6 @@ footer {
   padding: 5px;
   @include rem(border, 1px solid $banner_border);
 }
-#main-content {
-  @include column(8);
-}
 #main-content > *:first-child {
   padding-top: 0;
 }
@@ -99,4 +99,8 @@ header, #main-content, #page {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+}
+
+.lt-ie9 #home_img {
+  width: inherit;
 }

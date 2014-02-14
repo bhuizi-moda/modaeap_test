@@ -1,4 +1,10 @@
-%ul(id = "main-nav")
+%ul
+  = list_of({:Home => "/", :"EAP services" => "/services.html", :Resources => "/resources.html", :Confidentiality => "/confidentiality.html", :FAQs => "/faqs.html"}, {class: "nav", role: "nav"}) do |title,path|
+    %a{ href: path }= title
+
+
+
+%ul(class = "main-nav")
 	%li{:class => "home nav", :role => "nav"}
 		%a(href="/") Home
 	%li{:class => "services nav", :role => "nav"}

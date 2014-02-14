@@ -2,11 +2,11 @@
 
 //custom bulleted lists
 
-.moda-list {
+#main-content ul {
     margin: 0 0 0.75em 2em;
 }
 
-.moda-list li {
+#main-content ul > li {
   line-height: 1.2;
   list-style-image: url("/images/bullet_arrow.gif");
   list-style-position: outside;
@@ -25,12 +25,35 @@
   @include font-size(30px);
 }
 
-.main-nav {
-      
+.home #main-nav .home,
+.faqs #main-nav .faqs,
+.confidentiality #main-nav .confidentiality,
+.services #main-nav .services,
+.resources #main-nav .resources {
+    background-color: $body_bgcolor;  
+}
+
+#main-nav {
+	li {
+		position: relative;
+		@include rem(left, -20px);
+		a {
+			position: relative;
+			left: 20px;
+		}
+	}
+	&.active {
+		li {
+			left: 0;
+			a {
+				left: 0;
+			}
+		}
+	}
 }
 
 @include respond(all-phones) {
-	.main-nav {
+	#main-nav {
 		display: none;
 		width: 100%;
 		text-align: center;

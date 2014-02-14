@@ -30,7 +30,10 @@
 .confidentiality #main-nav .confidentiality,
 .services #main-nav .services,
 .resources #main-nav .resources {
-    background-color: $body_bgcolor;  
+    background-color: $body_bgcolor;
+    @include respond(all-phones) {
+    	background-color: $modern_plum;
+    }  
 }
 
 #main-nav {
@@ -63,7 +66,7 @@
 			@include rem(margin-bottom, 22px);
 		}
 		li {
-			background: #ccc;
+			background: $modern_aqua;
 			border-top: 1px solid #fff;
 			&:first-child {
 				border-top: 0 none;

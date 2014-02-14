@@ -1,13 +1,11 @@
-// Your custom mixin SCSS should be written here...
-
 //pulled from somewhere on the interwebs, but see susy grid _units.scss
 
 // @private Default font-size for all browsers
 $browser-default-font-size: 16px;
 
-// Base font size in pixels, if not already defined. (yes this is defined by gumby in vars/_settings.scss)
+// Base font size in pixels, if not already defined.
 // Should be the same as the font-size of the html element.
-// $base-font-size: 16px !default;
+$base-font-size: 16px !default;
 
 // Whether to output fallback values in px when outputting rems.
 $rem-with-px-fallback: true !default;

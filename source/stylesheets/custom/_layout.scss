@@ -8,15 +8,21 @@
 
 //column layout
 #nav-container {
-  @include column(5)
+  @include column(5);
 }
 #main-content {
   @include column(10);
   @include pull(left, 1);
+  @include rem(margin-top, 27px); /*34 from comp -7px extra in layout*/
+  @include respond(desktop) {
+    margin-top: 0;
+  } 
 }
 
 header {
-  @include rem(padding-bottom, 27px); /*34 from comp -7px extra in layout*/
+  @include respond(desktop) {
+    @include rem(margin-bottom, 27px); /*34 from comp -7px extra in layout*/
+  } 
 }
 footer {
   background: #fff;
@@ -27,36 +33,19 @@ footer {
   @include rem(border-bottom, 1px solid $banner_border);
 }
 #topbar{
+  @include rem(padding, 0 5px);
   position: relative;
   @include rem(margin-bottom, 22px);
   @include rem(min-width, 320px);
-}
-  .topbar_title, #call_us {
+  .call-us {
+    @extend %call-base;
     position: absolute;
-  }
-  .topbar_title  {
-    @include rem(bottom, 3px); /*even up with logo*/
-    @include rem(line-height, 1em);
-    right: 0;
-    padding-bottom: 0;
-    text-align: right;
-    @include respond("max-width: 768px") {
-      @include rem(bottom, 10px);
-    }
-  }
-  #call_us {
     display: none;
-    @include font-size(15px);
     top: 0;
     @include rem(right, -20px);
     @include rem(top, -20px);
     @include rem(padding, 6px);
-    background-color: $modern-aqua;
     @include border-bottom-left-radius(5px);
-    color: #fff;
-    .phone{
-      @include font-size(22px);
-    }
     @include respond(all-phones) {
       .text {
         @include font-size(13px);
@@ -65,21 +54,36 @@ footer {
         @include font-size(16px);
       }
     }
-    @include respond("max-width: 400px"){
+    @include respond("max-width: 400px"){ //document this magic width, eh?
       .text {
         display: none;
       }
       width: 60%;
     }
-    &.is_visible {
+    &.is-visible {
       display: block;
+    }
+  }
+}
+  .topbar-title  {
+    display: inline;
+    @include rem(line-height, 1em);
+    @include rem(margin-left, 10px); /*roughly 40px from left*/
+    @include respond(desktop){
+      position: absolute;
+      @include rem(bottom, 3px); /*even up with logo*/
+      @include rem(right, 5px);
+      padding-bottom: 0;
+      text-align: right;
+      margin-left: 0;
     }
   }
 #logo {
   z-index: 1;
   position: relative;
+  display: block;
 }
-#home_img {
+#home-img {
   padding: 5px;
   @include rem(border, 1px solid $banner_border);
 }
@@ -101,6 +105,6 @@ header, #main-content, #page {
   }
 }
 
-.lt-ie9 #home_img {
+.lt-ie9 #home-img {
   width: inherit;
 }

@@ -128,6 +128,11 @@ set :images_dir, 'images'
 
 set :fonts_dir, 'stylesheets/fonts'
 
+
+compass_config do |config|
+  config.sass_options = {:debug_info => true}
+end
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment

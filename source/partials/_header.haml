@@ -3,14 +3,15 @@
 
 #branding{:role => "banner", :class => ("nobannerimg" unless current_page.data.bannerimg)}
     #topbar
-        %img#logo{:src => "images/moda.png", :height => "71", :width => "145"}
+        %a#logo{:href => "https://www.modahealth.com"}
+            %img{:src => "images/moda.png", :height => "71", :width => "145"}
         %a{:class => "toggle icon-menu-toggle", "gumby-trigger" => "#main-nav", :href => "#"}
             %i{:class => "icon-menu"}
-        #call_us{:class => ("is_visible" unless current_page.data.bannerimg)}
+        .call-us{:class => ("is-visible" unless current_page.data.bannerimg)}
             %span{:class => "text"} Call us 24/7 at
             %span{:class => "phone"} 800-826-9231
-        %h2{:class => "topbar_title"}= "Employee Assistance Program"
+        %h2{:class => "topbar-title"}= "Employee Assistance Program"
 
 -if current_page.data.bannerimg
-    %img#home_img{"gumby-default" => "images/banner.jpg", "gumby-media" => "only screen and (max-width: 700px) and (min-width: 466px)|images/banner_tablet.jpg, only screen and (max-width: 465px)|images/banner_phone.jpg"}
+    %img#home-img{"gumby-default" => "images/banner.jpg", "gumby-media" => "only screen and (max-width: 700px) and (min-width: 466px)|images/banner_tablet.jpg, only screen and (max-width: 465px)|images/banner_phone.jpg"}
 

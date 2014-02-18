@@ -2,87 +2,126 @@
 
 //custom bulleted lists
 
-#main-content ul {
-    margin: 0 0 0.75em 2em;
-}
+	#main-content ul {
+	    margin: 0 0 0.75em 2em;
+	}
 
-#main-content ul > li {
-  line-height: 1.2;
-  list-style-image: url("/images/bullet_arrow.gif");
-  list-style-position: outside;
-  margin-bottom: 0.2em;
-  width: 85%;
-}
+	#main-content ul > li {
+	  line-height: 1.2;
+	  list-style-image: url("/images/bullet_arrow.gif");
+	  list-style-position: outside;
+	  margin-bottom: 0.2em;
+	  width: 85%;
+	}
+
+//toggle menu (hamburber) defaults
+
+	.icon-menu-toggle {
+		float: left;
+	  	//@include rem(height, 40px);
+	  	//@include rem(width, 46px);
+	  	//@include rem(line-height, 38px);
+	  	@include font-size(30px);
+	  	@include respond(desktop) {
+		  	display: none;
+	  	}
+	  	i {
+	  		margin-left: 0;
+	  	}
+	}
 
 //navigation
 
-//toggle menu (hamburber) defaults
-.icon-menu-toggle {
-  display: none;
-  @include rem(height, 40px);
-  @include rem(width, 46px);
-  @include rem(line-height, 38px);
-  @include font-size(30px);
-}
-
-.home #main-nav .home,
-.faqs #main-nav .faqs,
-.confidentiality #main-nav .confidentiality,
-.services #main-nav .services,
-.resources #main-nav .resources {
-    background-color: $body_bgcolor;
-    @include respond(all-phones) {
-    	background-color: $modern_plum;
-    }  
-}
-
-#main-nav {
-	li {
-		position: relative;
-		@include rem(left, -20px);
-		a {
-			position: relative;
-			left: 20px;
-		}
+	.home #main-nav .home,
+	.faqs #main-nav .faqs,
+	.confidentiality #main-nav .confidentiality,
+	.services #main-nav .services,
+	.resources #main-nav .resources {
+	    background-color: $compact_nav_selected_bgcolor;
+	    a {
+	    	color: $warm_brown;
+	    }
+	    @include respond(desktop) {
+	    	background-color: $body_bgcolor;
+	    }  
 	}
-	&.active {
-		li {
-			left: 0;
-			a {
-				left: 0;
-			}
-		}
-	}
-}
 
-@include respond(all-phones) {
 	#main-nav {
-		display: none;
-		width: 100%;
-		text-align: center;
-		color: #fff !important;
-		&.active {
-			display:inline-block;
-			@include rem(margin-bottom, 22px);
-		}
 		li {
-			background: $modern_aqua;
-			border-top: 1px solid #fff;
-			&:first-child {
-				border-top: 0 none;
+			padding-left: 20px;
+			position: relative;
+			@include rem(left, -20px);
+		}
+	}
+
+	@include respond(desktop){
+		.vertical-nav {
+			&.fixed {
+				width: (.2978723 * 940px);
 			}
 		}
-		a {
+	}
+
+	@include respond(all-phones) {
+		#nav-container,
+		.vertical-nav,
+		#main-nav {
 			width: 100%;
-			height: 100%;
-			display: block;
-			color: #fff;
-			&:hover {
-				color: $modern-plum;
+			li {
+				width: 100%;
+				left: 0;
+				a {
+					width: 100%;
+					left: 0;
+				}
 			}
 		}
+		#main-nav {
+			max-height: 0;
+			margin-bottom: 0;
+			overflow: hidden;
+			@include transition(max-height 0.8s, margin-bottom 0.8s);
+			color: $modern_plum !important;
+			&.active {
+				max-height: 600px;
+			}
+			li {
+				background: $compact_nav_bgcolor;
+				border-top: 1px solid #fff;
+				@include rem(padding-left, 40px);
+				@include respond(desktop) {
+
+				}
+				&:hover {
+					color: $warm_brown;
+					background: $compact_nav_selected_bgcolor;
+				}
+				a {
+					height: 100%;
+					display: block;
+				}
+			}
+		}
+		.icon-menu-toggle {
+			display: block;
+		}
 	}
-	.icon-menu-toggle {
-		display: block;
+
+//lead-in on home page
+	
+	#lead-in {
+		//@include fancytiles(2,1,1);
+	  	//min-height: 300px;
+	  	//height: auto;
+  		@include row(nested);
+  		.col1, .col2 {
+  			@include column(8);
+  		}
 	}
-}
+
+//call us boxes
+	#main-content .call-us {
+		@extend %call-base;
+		@include rem(padding, 15px);
+		@include rem(border-radius, 6px);
+	}

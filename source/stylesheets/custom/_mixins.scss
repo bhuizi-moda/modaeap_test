@@ -1,6 +1,21 @@
 // Your custom mixin SCSS should be written here...
 
-//pulled from somewhere on the interwebs, but see susy grid _units.scss
+
+/* ==========================================================================
+  Call-us base
+   ========================================================================== */
+.call-base {
+  background-color: $modern_aqua;
+  color: #fff;
+  @include font-size(15px);
+  .phone{
+    @include font-size(22px);
+  }
+}
+
+/* ==========================================================================
+  REMS, pulled from somewhere on the interwebs, but see susy grid _units.scss
+   ========================================================================== */
 
 // @private Default font-size for all browsers
 $browser-default-font-size: 16px;

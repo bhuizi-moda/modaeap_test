@@ -46,11 +46,12 @@
       #page
         %section#nav-container
           /gumby-fixed needs to be here, not on the container
-          %nav{:class => "vertical-nav", "gumby-fixed" => "top"} 
+          %nav{:class => "vertical-nav", "gumby-fixed" => "#page"} 
             = partial "partials/_nav"
 
         %section#main-content{:role => "main"}
-          %h1= current_page.data.title
+          -if current_page.data.bodyclass != "home"
+            %h1= current_page.data.title
           -# Page content gets rendered here
           = yield
 

@@ -13,36 +13,52 @@
 @include font-face("omnes_ods_lightitalic", font-files("omnesods_light-italic-webfont.woff", "omnesods_light-italic-webfont.ttf", "omnesods_light-italic-webfont.svg"), "omnesods_light-italic-webfont.eot", true, true);
 
 html {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 body {
-	background: $body_bgcolor;
+  background: $body_bgcolor;
 }
 
 body, p {
-	font-family: "omnes_ods_regularregular", verdana, sans-serif;
-	font-weight: normal;
+  font-family: "omnes_ods_regularregular", verdana, sans-serif;
+  font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, a {
-	font-family: "omnes_ods_mediumregular", verdana, sans-serif;
-	color: $modern_plum;
+  font-family: "omnes_ods_mediumregular", verdana, sans-serif;
+}
+
+h2, h3, h4, h5, a {
+    color: $modern_plum;
 }
 
 h1 {
- @include font-size($large);
-  &.xlarge {
-    @include font-size($larger);
-  }
-  &.xxlarge {
-    @include font-size($xlarge);
-  }
-  &.absurd {
-    @include font-size($xxlarge);
-  }
+    color: $modern_aqua;
+    @include font-size($large);
+    &.xlarge {
+        @include font-size($larger);
+    }
+    &.xxlarge {
+        @include font-size($xlarge);
+    }
+    &.absurd {
+        @include font-size($xxlarge);
+    }
 }
 h2 { @include font-size($med); }
 h3 { @include font-size($norm); }
 h4 { @include font-size($small); }
 h5 { @include font-size($xsmall); }
+
+@include respond(all-phones) {
+
+  h1 { @include font-size($large);}
+  h2 { @include font-size($med);}
+
+}
+
+a {
+    //fix issue with tap highlighting on android/webkit?
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

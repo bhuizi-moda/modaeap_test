@@ -122,16 +122,27 @@ end
 
 set :css_dir, 'stylesheets'
 
-set :js_dir, 'javascripts'
+set :js_dir, 'js'
 
 set :images_dir, 'images'
 
 set :fonts_dir, 'stylesheets/fonts'
 
+# Add bower's directory to sprockets asset path
+#after_configuration do
+#  @bower_config = JSON.parse(IO.read("#{root}/.bowerrc"))
+#  sprockets.append_path File.join "#{root}", @bower_config["directory"]
+#end
 
-compass_config do |config|
-  config.sass_options = {:debug_info => true}
+# Add bower's directory to sprockets asset path
+
+ready do
+  sprockets.append_path File.join root, 'components'
 end
+
+#compass_config do |config|
+#  config.sass_options = {:debug_info => true}
+#end
 
 # Build-specific configuration
 configure :build do

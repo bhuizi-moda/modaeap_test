@@ -1,6 +1,8 @@
 // Your custom module SCSS should be written here...
 
-//custom bulleted lists
+/* ==========================================================================
+  Custom bulleted lists
+   ========================================================================== */
 
 	#main-content ul {
 	    margin: 0 0 0.75em 2em;
@@ -14,23 +16,30 @@
 	  width: 85%;
 	}
 
-//toggle menu (hamburber) defaults
+/* ==========================================================================
+  Toggle menu (hamburger)
+   ========================================================================== */
 
 	.icon-menu-toggle {
-		float: left;
+		//float: left;
 	  	//@include rem(height, 40px);
 	  	//@include rem(width, 46px);
 	  	//@include rem(line-height, 38px);
+	  	position: relative;
+	  	@include rem(bottom, -3px); //even up with topbar title
 	  	@include font-size(30px);
 	  	@include respond(desktop) {
 		  	display: none;
+		  	bottom: 0;
 	  	}
 	  	i {
 	  		margin-left: 0;
 	  	}
 	}
 
-//navigation
+/* ==========================================================================
+  Navigation - not optimized mobile-first (at this point)
+   ========================================================================== */
 
 	.home #main-nav .home,
 	.faqs #main-nav .faqs,
@@ -49,6 +58,7 @@
 	#main-nav {
 		li {
 			padding-left: 20px;
+			padding-bottom: 0;
 			position: relative;
 			@include rem(left, -20px);
 		}
@@ -57,8 +67,17 @@
 	@include respond(desktop){
 		.vertical-nav {
 			&.fixed {
-				width: (.2978723 * 940px);
+				width: inherit;
+				@include rem(max-width, 220px); //this is the width of the nav unfixed, and it overflows otherwise
+				@include rem(margin-left, -20px); //deals with issue on my android where fixed nav pulls away from left
+				@include rem(padding-left, 20px);
 			}
+			&.unfixed { //wanky, non-js way of having the unfixed nav adjust to match the fixed width context when the viewport is narrower than full-width content
+				@include respond("max-width: 940px") {
+					@include rem(margin-right, -9px);
+				}
+			}
+			//this leaves a 10px gap where the menu width changes from unfixed to fixed
 		}
 	}
 
@@ -88,10 +107,7 @@
 			li {
 				background: $compact_nav_bgcolor;
 				border-top: 1px solid #fff;
-				@include rem(padding-left, 40px);
-				@include respond(desktop) {
-
-				}
+				padding-left: 0;
 				&:hover {
 					color: $warm_brown;
 					background: $compact_nav_selected_bgcolor;
@@ -99,29 +115,61 @@
 				a {
 					height: 100%;
 					display: block;
+					@include rem(padding-left, 40px);
 				}
 			}
 		}
 		.icon-menu-toggle {
-			display: block;
+			display: inline-block;
 		}
 	}
 
-//lead-in on home page
-	
-	#lead-in {
-		//@include fancytiles(2,1,1);
-	  	//min-height: 300px;
-	  	//height: auto;
+/* ==========================================================================
+  Home page lead-in section
+   ========================================================================== */
+
+//Gumby respond is automatically resetting this at the mobile breakpoint
+
+	.lead-in {
   		@include row(nested);
   		.col1, .col2 {
   			@include column(8);
   		}
+  		@include respond(desktop) {
+  			@include rem(margin-bottom, 13px); //double up on normal paragraph margin
+  		}
 	}
 
-//call us boxes
+/* ==========================================================================
+  Call us boxes
+   ========================================================================== */
+
 	#main-content .call-us {
 		@extend %call-base;
 		@include rem(padding, 15px);
 		@include rem(border-radius, 6px);
+		@include rem(margin-bottom, 13px);
+		width: 100%;
+		@include respond(desktop) {
+			width: auto;
+		}
 	}
+
+/* ==========================================================================
+  Home page icon set
+   ========================================================================== */
+
+.with-icon {
+	@include respond(all-phones) {
+		background: none !important;
+	}
+	@include respond(desktop) {
+		@include rem(padding-left, 100px);
+		@include rem(background-size, 80px 80px);
+	}
+}
+
+.lt-ie9 .with-icon { //just get rid of this on ie8 because it can't handle background image sizing correctly
+	background: none;
+	padding-left: 0;
+}

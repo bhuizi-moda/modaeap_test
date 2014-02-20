@@ -9,15 +9,3 @@ $body_bgcolor: rgb(230,245,245);
 $compact_nav_bgcolor: rgb(238,238,238);
 $compact_nav_selected_bgcolor: rgb(191,231,227);
 $custom_respond: 400px;
-
-/* ==========================================================================
-  Call-us base
-   ========================================================================== */
-%call-base {
-  background-color: $modern_aqua;
-  color: #fff;
-  @include font-size(15px);
-  .phone{
-    @include font-size(22px);
-  }
-}

@@ -1,17 +1,6 @@
 // Your custom mixin SCSS should be written here...
+// I am also including bases for @extends here (placeholders or ref classes), because I don't want to create another file just yet
 
-
-/* ==========================================================================
-  Call-us base
-   ========================================================================== */
-.call-base {
-  background-color: $modern_aqua;
-  color: #fff;
-  @include font-size(15px);
-  .phone{
-    @include font-size(22px);
-  }
-}
 
 /* ==========================================================================
   REMS, pulled from somewhere on the interwebs, but see susy grid _units.scss
@@ -174,4 +163,17 @@ $rem-with-px-fallback: true !default;
   @each $value in $values { $has-rem: if(unit($value) == 'rem', true, $has-rem); }
   @if $has-rem { @include rem($property, $values, $use-px-fallback); }
   @else { #{$property}: $values; }
+}
+
+/* ==========================================================================
+  Call-us base
+   ========================================================================== */
+%call-base {
+  display: inline-block;
+  background-color: $modern_aqua;
+  color: #fff;
+  @include font-size(15px);
+  .phone{
+    @include font-size(22px);
+  }
 }

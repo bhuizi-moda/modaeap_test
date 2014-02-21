@@ -40,6 +40,7 @@ footer {
   @include rem(padding, 0 5px);
   position: relative;
   @include rem(margin-bottom, 22px);
+  @include rem(min-width, 320px);
   .call-us {
     @extend %call-base;
     position: absolute;
@@ -92,24 +93,28 @@ footer {
   }
 }
 
-  .topbar-title  {
-    display: inline;
-    position: relative;
-    white-space: nowrap;
-    margin-bottom: 0;
-    padding: 0;
-    @include rem(line-height, 1em);
-    @include rem(left, 10px); /*roughly 40px from left*/
-    @include respond(desktop){
-      display: block;
-      position: absolute;
-      bottom: 0;
-      @include rem(right, 5px);
-      padding-bottom: 0;
-      text-align: right;
-      left: 0;
-    }
+.topbar-title  {
+  display: inline;
+  position: relative;
+  white-space: nowrap;
+  margin-bottom: 0;
+  padding: 0;
+  @include rem(line-height, 1em);
+  @include rem(left, 10px); /*roughly 40px from left*/
+  @include respond(desktop){
+    display: block;
+    position: absolute;
+    bottom: 0;
+    @include rem(right, 5px);
+    padding-bottom: 0;
+    text-align: right;
+    left: 0;
   }
+  a {
+    color: $modern-plum;
+  }
+}
+
 #logo {
   z-index: 1;
   position: relative;
@@ -130,12 +135,19 @@ footer {
       @include rem(border-bottom, 1px solid $banner_border);
     }
   }
+  .lt-ie9 #home-img {
+    width: inherit; //necessary to get ie8 to scale the image in both directions
+  }
+
+
 #main-content > *:first-child {
   padding-top: 0;
 }
+
 header, #main-content, #page {
   @include rem(max-width, 940px);
 }
+
 .container {
   @include rem(max-width, 980px);
   @include rem(min-width, 320px);
@@ -147,8 +159,4 @@ header, #main-content, #page {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
-}
-
-.lt-ie9 #home-img {
-  width: inherit; //necessary to get ie8 to scale the image in both directions
 }

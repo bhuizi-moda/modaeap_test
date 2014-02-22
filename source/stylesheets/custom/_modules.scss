@@ -17,6 +17,105 @@
 	}
 
 /* ==========================================================================
+  Top bar (within header)
+   ========================================================================== */
+
+#topbar{
+  @include rem(padding, 0 5px);
+  position: relative;
+  @include rem(margin-bottom, 22px);
+  @include rem(min-width, 320px);
+  .call-us {
+    @extend %call-base;
+    position: absolute;
+    display: none;
+    top: 0;
+    @include rem(right, -20px);
+    @include rem(top, -20px);
+    @include border-bottom-left-radius(5px);
+    .text {
+      display: none; //override by showing only the "call us" span, below
+    }
+    .icon-icon_callus {
+      @include rem(padding-left, 40px);
+      display: inline-block;
+      background-origin: content-box; /*Android ICS seems to be buggy with background positioning and attachment. Had 30px left padding and origin padding-box, but changed to this for compromise*/
+      @include rem(background-position, -40px center);
+    }
+    @include respond(desktop) { //no way to combine the media query and selector-based override here, although the rules are identical
+      .text {
+        display: inline;
+      }
+      .icon-icon_callus {
+        background-image: none;
+        padding-left: 0;
+      }
+    }
+    &.is-visible-topbar {
+      display: block;
+    }
+  }
+}
+
+.lt-ie9 {
+  #topbar {
+    .call-us {
+      .icon-icon_callus {
+        background-image: none;
+        padding-left: 0;
+      }
+      .text {
+        display: none;
+      }
+      @include respond(desktop){
+        .text {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+  Topbar title
+   ========================================================================== */
+
+.topbar-title  {
+  display: inline;
+  position: relative;
+  white-space: nowrap;
+  margin-bottom: 0;
+  padding: 0;
+  @include rem(line-height, 1em);
+  @include rem(left, 10px); /*roughly 40px from left*/
+  @include respond(desktop){
+    display: block;
+    position: absolute;
+    bottom: 0;
+    @include rem(right, 5px);
+    padding-bottom: 0;
+    text-align: right;
+    left: 0;
+  }
+  a {
+    color: $modern-plum;
+  }
+}
+
+/* ==========================================================================
+  Logo
+   ========================================================================== */
+
+#logo {
+  z-index: 1;
+  position: relative;
+  display: block;
+  @include replace-text("images/moda.png");
+  width: 145px;
+  height: 75px;
+}
+
+/* ==========================================================================
   Toggle menu (hamburger)
    ========================================================================== */
 
@@ -130,30 +229,57 @@
 
 //Gumby respond is automatically resetting this at the mobile breakpoint
 
-	.lead-in {
-  		@include row(nested);
-  		.col1, .col2 {
-  			@include column(8);
-  		}
-  		@include respond(desktop) {
-  			@include rem(margin-bottom, 13px); //double up on normal paragraph margin
-  		}
+.lead-in {
+	@include row(nested);
+	.col1, .col2 {
+		@include column(8);
 	}
+	@include respond(desktop) {
+		@include rem(margin-bottom, 13px); //double up on normal paragraph margin
+	}
+}
+
+.lead-in-nested-col {
+	display: none;
+}
 
 /* ==========================================================================
-  Call us boxes
+  Call us boxes (see also topbar call-us styles)
    ========================================================================== */
 
-	#main-content .call-us {
-		@extend %call-base;
-		@include rem(padding, 15px);
-		@include rem(border-radius, 6px);
-		@include rem(margin-bottom, 13px);
-		width: 100%;
-		@include respond(desktop) {
-			width: auto;
+	#main-content {
+		.call-us {
+			@extend %call-base;
+			@include rem(padding, 15px);
+			@include rem(border-radius, 6px);
+			@include rem(margin-bottom, 13px);
+			width: 100%;
+			@include respond(all-phones) {
+				display: none;
+			}
+			@include respond(desktop) {
+				width: auto;
+			}
 		}
+		.call-us-top {
+			@include row(nested);
+			.call-us {
+				display: block;
+				@include column(16);
+				width: 100%;
+				@include respond(desktop) {
+					display: none;
+				}
+				@include rem(padding, 6px 10px);
+			}
+		}
+	} 
+
+	#main-content .icon-icon_callus {
+		background-image: none;
 	}
+
+
 
 /* ==========================================================================
   Home page icon set
@@ -173,3 +299,26 @@
 	background: none;
 	padding-left: 0;
 }
+
+/* ==========================================================================
+  Home image
+   ========================================================================== */
+.home-img {
+	padding: 5px;
+  	@include rem(border, 1px solid $banner_border);
+}
+	#branding .home-img {
+		display: none;
+		@include respond(desktop) {
+			display: block;
+		}
+	}
+	#page .home-img {
+		display: block;
+		@include respond(desktop) {
+			display: none;
+		}
+	}
+  .lt-ie9 .home-img {
+    width: inherit; //necessary to get ie8 to scale the image in both directions
+  }

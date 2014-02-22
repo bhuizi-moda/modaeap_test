@@ -4,23 +4,23 @@ bodyclass: home
 bannerimg: true
 ---
 
+.call-us-top
+    = partial "partials/_call-us"
 .lead-in
     .col1
         :markdown
             Every now and then we can all use a little help to get back on track. If you, or your eligible family members, are experiencing life&#8217;s ups and downs that are affecting you personally and professionally, the Moda Health Employee Assistance Program (EAP), powered by the good folks at Cascade Centers, can help. This free and completely confidential counseling benefit can support and assist you with a variety of concerns that can interfere with your day-to-day activities, including:
        
-            - Relationship problems
-            - Depression or anxiety
-            - Stress management
-            - Alcohol or drug abuse
-            - Community resources
-            - Identity theft
+        = partial "partials/_activities-list"
+
+        .lead-in-nested-col
+            = partial "partials/_lead-in-nested-col"
+
     .col2
         :markdown
             With Moda Health EAP, you&#8217;ll have 24/7 access to our highly trained team of professional counselors who are ready to help you with personal issues that are affecting your or your eligible family members. We can accommodate whatever point of contact that works best for you.
 
-        %a.call-us{:href => "tel:1-800-826-9231"}
-            Call us 24/7 at <span class="phone">800-826-9231</span>
+        = partial "partials/_call-us"
 
 .icon-icon_facetofacevisits.with-icon
     :markdown

@@ -176,4 +176,5 @@ $rem-with-px-fallback: true !default;
   .phone{
     @include font-size(22px);
   }
+  @include rem(padding, 6px 10px);
 }

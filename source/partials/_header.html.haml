@@ -6,7 +6,8 @@
         %a#logo{:href => "https://www.modahealth.com"} Moda Health. Healthcare from your head to your toes.
         %a{:class => "toggle icon-menu-toggle", "gumby-trigger" => "#main-nav", :href => "#"}
             %i{:class => "icon-menu"}
-        =partial "partials/_call-us"
+        -if current_page.data.bannerimg
+            = partial "partials/_call-us"
         %h2{:class => "topbar-title"}
             %a{:href => "/"}= "Employee Assistance Program"
 

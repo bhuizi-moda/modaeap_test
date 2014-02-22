@@ -41,16 +41,20 @@
       %link{:href => "stylesheets/custom/icons.fallback.css", :rel => "stylesheet"}
 
 
-  %body{:class => current_page.data.bodyclass}
+  %body{:class => current_page.data.bodyclass, :id => "body"}
     .container
       %header
         = partial "partials/_header"
 
       #page
+
         %section#nav-container
           /gumby-fixed needs to be here, not on the container
           %nav{:class => "vertical-nav", "gumby-fixed" => "#page"} 
             = partial "partials/_nav"
+
+        -if current_page.data.bannerimg
+          = partial "partials/_home-img"
 
         %section#main-content{:role => "main"}
           -if current_page.data.bodyclass != "home"
@@ -58,10 +62,8 @@
           -# Page content gets rendered here
           = yield
 
-      #layout_footer
-
-    %footer
-      = partial "partials/_footer"
+      %footer
+        = partial "partials/_footer"
 
     :javascript      
       var oldieCheck = Boolean(document.getElementsByTagName('html')[0].className.match(/\soldie\s/g));

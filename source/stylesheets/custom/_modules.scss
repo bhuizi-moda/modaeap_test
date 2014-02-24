@@ -229,55 +229,73 @@
 
 //Gumby respond is automatically resetting this at the mobile breakpoint
 
-.lead-in {
+#main-content .lead-in { //unfortunate specificity seems necessary at this point because of other declarations (refactor?)
 	@include row(nested);
-	.col1, .col2 {
+	.col1, .col2 { 
 		@include column(8);
 	}
 	@include respond(desktop) {
 		@include rem(margin-bottom, 13px); //double up on normal paragraph margin
 	}
+	@include respond(tablets) {
+		.col1, .col2 {
+			@include row(nested);
+		}
+		.col1 > .activities-list,
+		.col2 > .call-us {
+			display: none !important;
+		}
+	}
 }
 
-.lead-in-nested-col {
+#main-content .lead-in .lead-in-nested-col {
 	display: none;
+	.activities-list, .call-us { //this declaration must be outside a media query for it to work
+		@include column(7); //nested columns need to be narrower because of margin on custom UL
+	}
+	@include respond(tablets) {
+		@include row(nested);
+		display: block;
+		.activities-list {
+			margin: 0 0 0.75em 2em;
+		}
+	}
 }
 
 /* ==========================================================================
   Call us boxes (see also topbar call-us styles)
    ========================================================================== */
 
-	#main-content {
-		.call-us {
-			@extend %call-base;
-			@include rem(padding, 15px);
-			@include rem(border-radius, 6px);
-			@include rem(margin-bottom, 13px);
-			width: 100%;
-			@include respond(all-phones) {
-				display: none;
-			}
-			@include respond(desktop) {
-				width: auto;
-			}
+#main-content {
+	.call-us {
+		@extend %call-base;
+		@include rem(padding, 15px);
+		@include rem(border-radius, 6px);
+		@include rem(margin-bottom, 13px);
+		@include respond(all-phones) {
+			display: none;
 		}
-		.call-us-top {
-			@include row(nested);
-			.call-us {
-				display: block;
-				@include column(16);
-				width: 100%;
-				@include respond(desktop) {
-					display: none;
-				}
-				@include rem(padding, 6px 10px);
-			}
+		@include respond(desktop) {
+			width: auto;
 		}
-	} 
-
-	#main-content .icon-icon_callus {
-		background-image: none;
 	}
+	.call-us-top {
+		@include row(nested);
+		@include respond(desktop) {
+			display: none;
+		}
+		.call-us {
+			display: block;
+			@include column(16);
+			width: 100%;
+			@include rem(padding, 6px 10px);
+		}
+	}
+} 
+
+#main-content .icon-icon_callus {
+	background-image: none;
+}
 
 
 

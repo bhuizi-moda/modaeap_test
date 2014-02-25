@@ -177,4 +177,7 @@ $rem-with-px-fallback: true !default;
     @include font-size(22px);
   }
   @include rem(padding, 6px 10px);
+  &:hover {
+    text-decoration: underline;
+  }
 }

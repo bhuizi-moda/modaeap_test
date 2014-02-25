@@ -61,4 +61,7 @@ h5 { @include font-size($xsmall); }
 a {
     //fix issue with tap highlighting on android/webkit?
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &:hover {
+      text-decoration: underline;
+    }
 }

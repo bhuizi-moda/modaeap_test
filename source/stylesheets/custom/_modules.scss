@@ -38,7 +38,7 @@
     }
     .icon-icon_callus {
       @include rem(padding-left, 40px);
-      display: inline-block;
+      display: inline;
       background-origin: content-box; /*Android ICS seems to be buggy with background positioning and attachment. Had 30px left padding and origin padding-box, but changed to this for compromise*/
       @include rem(background-position, -40px center);
     }
@@ -49,6 +49,7 @@
       .icon-icon_callus {
         background-image: none;
         padding-left: 0;
+        background-origin: padding-box;
       }
     }
     &.is-visible-topbar {
@@ -61,15 +62,17 @@
   #topbar {
     .call-us {
       .icon-icon_callus {
+      	position: relative;
         background-image: none;
-        padding-left: 0;
+        //@include rem(padding-left, 1px); //not sure what I missed here, but this was overlapping on IE8, and this code fixed it
+        left: 0;
       }
       .text {
         display: none;
       }
       @include respond(desktop){
         .text {
-          display: inline;
+          display: inline-block;
         }
       }
     }
@@ -119,109 +122,112 @@
   Toggle menu (hamburger)
    ========================================================================== */
 
-	.icon-menu-toggle {
-		//float: left;
-	  	//@include rem(height, 40px);
-	  	//@include rem(width, 46px);
-	  	//@include rem(line-height, 38px);
-	  	position: relative;
-	  	@include rem(bottom, -3px); //even up with topbar title
-	  	@include font-size(30px);
-	  	@include respond(desktop) {
-		  	display: none;
-		  	bottom: 0;
-	  	}
-	  	i {
-	  		margin-left: 0;
-	  	}
-	}
+.icon-menu-toggle {
+	//float: left;
+  	//@include rem(height, 40px);
+  	//@include rem(width, 46px);
+  	//@include rem(line-height, 38px);
+  	position: relative;
+  	@include rem(bottom, -3px); //even up with topbar title
+  	@include font-size(30px);
+  	@include respond(desktop) {
+	  	display: none;
+	  	bottom: 0;
+  	}
+  	i {
+  		margin-left: 0;
+  	}
+}
 
 /* ==========================================================================
   Navigation - not optimized mobile-first (at this point)
    ========================================================================== */
 
-	.home #main-nav .home,
-	.faqs #main-nav .faqs,
-	.confidentiality #main-nav .confidentiality,
-	.services #main-nav .services,
-	.resources #main-nav .resources {
-	    background-color: $compact_nav_selected_bgcolor;
-	    a {
-	    	color: $warm_brown;
-	    }
-	    @include respond(desktop) {
-	    	background-color: $body_bgcolor;
-	    }  
-	}
+.home #main-nav .home,
+.faqs #main-nav .faqs,
+.confidentiality #main-nav .confidentiality,
+.services #main-nav .services,
+.resources #main-nav .resources {
+    background-color: $compact_nav_selected_bgcolor;
+    a {
+    	color: $warm_brown;
+    }
+    @include respond(desktop) {
+    	background-color: $body_bgcolor;
+    }  
+}
 
+#main-nav {
+	li {
+		padding-left: 20px;
+		padding-bottom: 0;
+		position: relative;
+		@include rem(left, -20px);
+	}
+	a:hover {
+		color: $warm_brown;
+	}
+}
+
+@include respond(desktop){
+	.vertical-nav {
+		&.fixed {
+			width: inherit;
+			@include rem(max-width, 220px); //this is the width of the nav unfixed, and it overflows otherwise
+			@include rem(margin-left, -20px); //deals with issue on my android where fixed nav pulls away from left
+			@include rem(padding-left, 20px);
+		}
+		&.unfixed { //wanky, non-js way of having the unfixed nav adjust to match the fixed width context when the viewport is narrower than full-width content
+			@include respond("max-width: 940px") {
+				@include rem(margin-right, -9px);
+			}
+		}
+		//this leaves a 10px gap where the menu width changes from unfixed to fixed
+	}
+}
+
+@include respond(all-phones) {
+	#nav-container,
+	.vertical-nav,
 	#main-nav {
+		width: 100%;
 		li {
-			padding-left: 20px;
-			padding-bottom: 0;
-			position: relative;
-			@include rem(left, -20px);
-		}
-	}
-
-	@include respond(desktop){
-		.vertical-nav {
-			&.fixed {
-				width: inherit;
-				@include rem(max-width, 220px); //this is the width of the nav unfixed, and it overflows otherwise
-				@include rem(margin-left, -20px); //deals with issue on my android where fixed nav pulls away from left
-				@include rem(padding-left, 20px);
-			}
-			&.unfixed { //wanky, non-js way of having the unfixed nav adjust to match the fixed width context when the viewport is narrower than full-width content
-				@include respond("max-width: 940px") {
-					@include rem(margin-right, -9px);
-				}
-			}
-			//this leaves a 10px gap where the menu width changes from unfixed to fixed
-		}
-	}
-
-	@include respond(all-phones) {
-		#nav-container,
-		.vertical-nav,
-		#main-nav {
 			width: 100%;
-			li {
+			left: 0;
+			a {
 				width: 100%;
 				left: 0;
-				a {
-					width: 100%;
-					left: 0;
-				}
 			}
-		}
-		#main-nav {
-			max-height: 0;
-			margin-bottom: 0;
-			overflow: hidden;
-			@include transition(max-height 0.8s, margin-bottom 0.8s);
-			color: $modern_plum !important;
-			&.active {
-				max-height: 600px;
-			}
-			li {
-				background: $compact_nav_bgcolor;
-				border-top: 1px solid #fff;
-				padding-left: 0;
-				&:hover {
-					color: $warm_brown;
-					background: $compact_nav_selected_bgcolor;
-				}
-				a {
-					height: 100%;
-					display: block;
-					@include rem(padding-left, 40px);
-				}
-			}
-		}
-		.icon-menu-toggle {
-			display: inline-block;
 		}
 	}
+	#main-nav {
+		max-height: 0;
+		margin-bottom: 0;
+		overflow: hidden;
+		@include transition(max-height 0.8s, margin-bottom 0.8s);
+		color: $modern_plum !important;
+		&.active {
+			max-height: 600px;
+		}
+		li {
+			background: $compact_nav_bgcolor;
+			border-top: 1px solid #fff;
+			padding-left: 0;
+			&:hover {
+				color: $warm_brown;
+				background: $compact_nav_selected_bgcolor;
+			}
+			a {
+				height: 100%;
+				display: block;
+				@include rem(padding-left, 40px);
+			}
+		}
+	}
+	.icon-menu-toggle {
+		display: inline-block;
+	}
+}
 
 /* ==========================================================================
   Home page lead-in section
@@ -304,18 +310,38 @@
    ========================================================================== */
 
 .with-icon {
-	@include respond(all-phones) {
-		background: none !important;
+	padding-left: 0;
+	text-align: center;
+	h3, p {
+		text-align: left;
+	}
+	.icon {
+		//@include rem(background-size, 80px);
+		//background-position: top center;
+		@include rem(height, 80px);
+		@include rem(width, 80px);
+		
+		display: inline-block;
+		position: relative;
 	}
 	@include respond(desktop) {
+		text-align: left;
+		padding-top: 0;
 		@include rem(padding-left, 100px);
-		@include rem(background-size, 80px 80px);
+		.icon {
+			@include rem(left, -100px);
+			@include rem(margin-bottom, -100px);
+		}
 	}
 }
 
 .lt-ie9 .with-icon { //just get rid of this on ie8 because it can't handle background image sizing correctly
 	background: none;
 	padding-left: 0;
+	padding-top: 0;
+	.icon {
+		background: none;
+	}
 }
 
 /* ==========================================================================

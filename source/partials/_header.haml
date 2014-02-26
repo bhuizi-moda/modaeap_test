@@ -3,7 +3,9 @@
 
 #branding{:role => "banner", :class => ("nobannerimg" unless current_page.data.bannerimg)}
     #topbar
-        %a#logo{:href => "https://www.modahealth.com"} Moda Health. Healthcare from your head to your toes.
+        #logo
+            :markdown
+                Moda Health. Healthcare from your head to your toes.
 
         =partial "partials/_call-us"
 
@@ -15,4 +17,3 @@
 
     -if current_page.data.bannerimg
         = partial "partials/_home-img"
-

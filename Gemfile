@@ -21,6 +21,10 @@ gem "font-awesome-middleman", "~> 4.0.3"
 
 gem "modular-scale", "~> 1.0.6"
 
+#deployment
+
+gem "middleman-deploy"
+
 # For faster file watcher updates on Windows:
 ### Windows specific gems ###
 platforms :mswin, :mingw do

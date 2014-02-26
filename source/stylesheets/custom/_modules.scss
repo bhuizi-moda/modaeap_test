@@ -5,14 +5,14 @@
    ========================================================================== */
 
 	#main-content ul {
-	    margin: 0 0 0.75em 2em;
+	    @include rem(margin, 0 0 0 2em);
 	}
 
 	#main-content ul > li {
 	  line-height: 1.2;
 	  list-style-image: url("../images/bullet_arrow.gif");
 	  list-style-position: outside;
-	  margin-bottom: 0.2em;
+	  @include rem(margin-bottom, 0.2em);
 	  width: 85%;
 	}
 
@@ -37,10 +37,10 @@
       display: none; //override by showing only the "call us" span, below
     }
     .icon-icon_callus {
-      @include rem(padding-left, 40px);
+      @include rem(padding-left, 30px);
       display: inline;
       background-origin: content-box; /*Android ICS seems to be buggy with background positioning and attachment. Had 30px left padding and origin padding-box, but changed to this for compromise*/
-      @include rem(background-position, -40px center);
+      @include rem(background-position, -30px center);
     }
     @include respond(desktop) { //no way to combine the media query and selector-based override here, although the rules are identical
       .text {
@@ -312,7 +312,7 @@
 .with-icon {
 	padding-left: 0;
 	text-align: center;
-	h3, p {
+	> * {
 		text-align: left;
 	}
 	.icon {

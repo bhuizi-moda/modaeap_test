@@ -29,27 +29,30 @@ h1, h2, h3, h4, h5, a {
   font-family: "omnes_ods_mediumregular", verdana, sans-serif;
 }
 
-h2, h3, h4, h5, a {
+h3, h4, h5, a {
     color: $modern_plum;
 }
 
 h1 {
     color: $modern_aqua;
-    @include font-size($large);
+    @include font-size($larger);
     &.xlarge {
-        @include font-size($larger);
-    }
-    &.xxlarge {
         @include font-size($xlarge);
     }
-    &.absurd {
+    &.xxlarge {
         @include font-size($xxlarge);
     }
+    &.absurd {
+        @include font-size($xxxlarge);
+    }
 }
-h2 { @include font-size($med); }
-h3 { @include font-size($norm); }
-h4 { @include font-size($small); }
-h5 { @include font-size($xsmall); }
+h2 { 
+  @include font-size($large);
+  color: $warm_brown;
+}
+h3 { @include font-size($med); }
+h4 { @include font-size($norm); }
+h5 { @include font-size($small); }
 
 @include respond(all-phones) {
 

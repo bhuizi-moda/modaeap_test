@@ -4,11 +4,14 @@
 #branding{:role => "banner", :class => ("nobannerimg" unless current_page.data.bannerimg)}
     #topbar
         %a#logo{:href => "https://www.modahealth.com"} Moda Health. Healthcare from your head to your toes.
+
+        =partial "partials/_call-us"
+
         %a{:class => "toggle icon-menu-toggle", "gumby-trigger" => "#main-nav", :href => "#"}
             %i{:class => "icon-menu"}
-        =partial "partials/_call-us"
-        %h2{:class => "topbar-title"}
-            %a{:href => "/"}= "Employee Assistance Program"
+
+        %h3{:class => "topbar-title"}
+            %a{:href => "/"}= "Employee Assistance Program"        
 
     -if current_page.data.bannerimg
         = partial "partials/_home-img"

@@ -56,12 +56,6 @@ header {
     @include rem(border-bottom, 1px solid $banner_border);
   }
 
-  //@media only screen and (orientation: landscape) and (max-width: $tablet-device-width) {
-   // #branding {
-   //   @include rem(border-bottom, 1px solid $banner_border);
-  //  }
- // }
-
 /* ==========================================================================
   Footer
    ========================================================================== */

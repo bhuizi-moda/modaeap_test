@@ -23,7 +23,7 @@ gem "modular-scale", "~> 1.0.6"
 
 #deployment
 
-gem "middleman-deploy"
+#gem "middleman-deploy"
 
 # For faster file watcher updates on Windows:
 ### Windows specific gems ###
